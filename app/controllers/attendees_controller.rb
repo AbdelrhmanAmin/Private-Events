@@ -14,7 +14,6 @@ class AttendeesController < ApplicationController
 
   # GET /attendees/new
   def new
-    @event = Event.find(request.params['event'])
     @attendee = Attendee.new
   end
 
@@ -25,7 +24,7 @@ class AttendeesController < ApplicationController
   # POST /attendees
   # POST /attendees.json
   def create
-    @attendee = current_user.events.first.Attendee.build(attendee_params)
+    @attendee = Attendee.create!(attendee_params)
 
     respond_to do |format|
       if @attendee.save
@@ -70,6 +69,7 @@ class AttendeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def attendee_params
-      params.require(:attendee).permit(:attendee_id, :attended_event_id, :email)
+      puts params
+      params.require(:attendee).permit(:user_id, :event_id)
     end
 end

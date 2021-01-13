@@ -12,6 +12,8 @@
   <% end %>
 
   <div class="actions">
+    <%= form.hidden_field :event_id, value: current_user.event_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
     <%= form.submit %>
   </div>
 <% end %>

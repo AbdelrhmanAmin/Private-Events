@@ -4,5 +4,11 @@
   <%if @event.attendees.length > 0%>
     <%= @event.attendees.first.attendee.name %>
   <%end%>
+  <%= form_for @attendance do |form| %>
+    <%= form.hidden_field :event_id, value: @event.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.submit %>
+    <%end%>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
