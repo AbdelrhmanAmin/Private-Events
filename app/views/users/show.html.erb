@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+  
+    <% @user.events.each do |e| %>
+      <tr>
+        <td><%= e.name %></td>
+      </tr>
+    <% end %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
