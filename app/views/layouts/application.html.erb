@@ -10,7 +10,9 @@
   </head>
 
   <body>
+  <br>
     <%= link_to 'Homepage', root_path %>
+  <br>
     <% if user_signed_in? %>
       <%= current_user.name %> <br>
     <%end%>
