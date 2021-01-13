@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attendees
   resources :events
   devise_for :users, :controllers => { registrations: 'registrations' }
     devise_scope :user do

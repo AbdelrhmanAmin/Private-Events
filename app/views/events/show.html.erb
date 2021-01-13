@@ -1,4 +1,8 @@
 <p id="notice"><%= notice %></p>
-  <%= @event.creator.name %>
+  <%= @event.creator.name %> <br>
+  <%= @event.title %> <br>
+  <%if @event.attendees.length > 0%>
+    <%= @event.attendees.first.attendee.name %>
+  <%end%>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
