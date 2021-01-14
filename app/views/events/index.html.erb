@@ -22,6 +22,7 @@
         <% if user_signed_in? %>
           <% if event.creator.id == current_user.id %>
             <td><%= link_to 'Edit', edit_event_path(event) %></td>
+            <td><%= button_to 'Destroy', event_path(event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <%end%>
         <% end %>
       </tr>

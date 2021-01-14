@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :date, presence: true
   belongs_to :creator, class_name: 'User'
-  has_many :attendees
+  has_many :attendees, dependent: :destroy
   has_many :attendances, through: :attendees, source: :attendee
   
   def auto_populate_creator
