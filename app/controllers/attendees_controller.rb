@@ -24,7 +24,7 @@ class AttendeesController < ApplicationController
   # POST /attendees
   # POST /attendees.json
   def create
-    @attendee = Attendee.create!(attendee_params)
+    @attendee = Attendee.create!(attendee_params) if 
 
     respond_to do |format|
       if @attendee.save
@@ -32,7 +32,6 @@ class AttendeesController < ApplicationController
         format.json { render :show, status: :created, location: @attendee }
       else
         format.html { render :new }
-        format.json { render json: @attendee.errors, status: :unprocessable_entity }
       end
     end
   end

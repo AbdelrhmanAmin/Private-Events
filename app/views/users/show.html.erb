@@ -2,13 +2,13 @@
   <h1>ATTENDING</h1>
   <ul>
       <% @user.attended_events.each do |e| %>
-        <li><%= e.title %></li>
+        <li><%= e.title %></li> <br> 
       <%end%>
   </ul>
   <h1>Hosting</h1>
-    <%# @user.events.each do |e| %>
+    <% @user.events.each do |e| %>
       <tr>
-        <td><%#= e.name %></td>
+        <span><%= e.title %></span><br><br>
       </tr>
-    <%# end %>
+    <% end %>
 

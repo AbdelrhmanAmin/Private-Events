@@ -1,14 +1,24 @@
 <p id="notice"><%= notice %></p>
+  <h3>Creator</h3>
   <%= @event.creator.name %> <br>
+  <h3>Event title</h3>
   <%= @event.title %> <br>
-  <%if @event.attendees.length > 0%>
-    <%= @event.attendees.first.attendee.name %>
-  <%end%>
-  <%= form_for @attendance do |form| %>
-    <%= form.hidden_field :event_id, value: @event.id %>
-    <%= form.hidden_field :user_id, value: current_user.id %>
-    <%= form.submit %>
+  <h4>Attendees</h4>
+  <%if @event.attendances.length > 0%>
+    <% @event.attendances.each do |e| %>
+      <%= e.name %> <br>
+        <% if current_user.id != e.id %>
+          <%= form_for @attendance do |form| %>
+            <%= form.hidden_field :event_id, value: @event.id %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+            <%= form.submit %>
+          <%end%>
+        <%end%>
     <%end%>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+  <%else%>
+    <%= form_for @attendance do |form| %>
+      <%= form.hidden_field :event_id, value: params[:attendee[:user_id]] %>
+      <%= form.hidden_field :user_id, value: params[:attendee[:user_id]] %>
+      <%= form.submit %>
+    <%end%>
+  <%end%>
