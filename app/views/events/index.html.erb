@@ -11,8 +11,9 @@
     </tr>
   </thead>
 
+  <h4>Upcoming Events</h4>
   <tbody>
-    <% @events.each do |event| %>
+    <% @events.coming_events.each do |event| %>
       <tr>
         <td><%= event.title %></td>
         <td><%= event.creator.name %></td>
@@ -27,7 +28,32 @@
     <% end %>
   </tbody>
 </table>
+<table>
+  <thead>
+    <tr>
+      <th>Event:</th>
+      <th>Creator:</th>
+      <th>Date</th>
+    </tr>
+  </thead>
 
+  <h4>Old Events</h4>
+  <tbody>
+    <% @events.old_events.each do |event| %>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.creator.name %></td>
+        <td><%= event.date %></td>
+        <td><%= link_to 'Show', event %></td>
+        <% if user_signed_in? %>
+          <% if event.creator.id == current_user.id %>
+            <td><%= link_to 'Edit', edit_event_path(event) %></td>
+          <%end%>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 <br>
 
   <%= link_to 'New Event', new_event_path %>
