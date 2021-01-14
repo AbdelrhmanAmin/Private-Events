@@ -1,14 +1,22 @@
 <p id="notice"><%= notice %></p>
-  <h1>ATTENDING</h1>
+  <h4>ATTENDING</h4>
   <ul>
-      <% @user.attended_events.each do |e| %>
-        <li><%= e.title %></li> <br> 
-      <%end%>
+    <% @user.attended_events.coming_events.each do |e| %>
+      <li><%= e.title %></li> <br> 
+    <%end%>
   </ul>
-  <h1>Hosting</h1>
+  <br>
+  <h4>ATTENDED</h4>
+  <ul>
+    <% @user.attended_events.old_events.each do |e| %>
+      <li><%= e.title %></li> <br> 
+    <%end%>
+  </ul>
+  <br>
+  <h4>HOSTING</h4>
     <% @user.events.each do |e| %>
-      <tr>
-        <span><%= e.title %></span><br><br>
-      </tr>
+      <ul>
+        <li><%= e.title %></li><br><br>
+      </ul>
     <% end %>
 

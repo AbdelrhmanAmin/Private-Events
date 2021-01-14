@@ -3,22 +3,28 @@
   <%= @event.creator.name %> <br>
   <h3>Event title</h3>
   <%= @event.title %> <br>
-  <h4>Attendees</h4>
   <%if @event.attendances.length > 0%>
+  <h4>Attendees</h4>
     <% @event.attendances.each do |e| %>
       <%= e.name %> <br>
-        <% if current_user.id != e.id %>
+      <% if user_signed_in? %>
+        <% if current_user.id != @event.creator.id && e.id != current_user.id  %>
           <%= form_for @attendance do |form| %>
             <%= form.hidden_field :event_id, value: @event.id %>
             <%= form.hidden_field :user_id, value: current_user.id %>
             <%= form.submit %>
           <%end%>
         <%end%>
+    <% end %>
     <%end%>
   <%else%>
-    <%= form_for @attendance do |form| %>
-      <%= form.hidden_field :event_id, value: params[:attendee[:user_id]] %>
-      <%= form.hidden_field :user_id, value: params[:attendee[:user_id]] %>
-      <%= form.submit %>
-    <%end%>
+  <% if user_signed_in? %>
+        <% if current_user.id != @event.creator.id %>
+          <%= form_for @attendance do |form| %>
+            <%= form.hidden_field :event_id, value: @event.id %>
+            <%= form.hidden_field :user_id, value: current_user.id %>
+            <%= form.submit %>
+          <%end%>
+        <%end%>
+  <%end%>
   <%end%>

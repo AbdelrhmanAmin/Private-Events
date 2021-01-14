@@ -5,6 +5,10 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    if user_signed_in?
+      @prev = Event.old_events
+      @coming = Event.coming_events
+    end
   end
 
   # GET /events/1
@@ -26,7 +30,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = current_user.events.build(event_params)
-
+    @event.attendees.first << current_user
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
