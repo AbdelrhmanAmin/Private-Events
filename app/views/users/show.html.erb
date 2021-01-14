@@ -1,10 +1,14 @@
 <p id="notice"><%= notice %></p>
-  
-    <% @user.events.each do |e| %>
+  <h1>ATTENDING</h1>
+  <ul>
+      <% @user.attended_events.each do |e| %>
+        <li><%= e.title %></li>
+      <%end%>
+  </ul>
+  <h1>Hosting</h1>
+    <%# @user.events.each do |e| %>
       <tr>
-        <td><%= e.name %></td>
+        <td><%#= e.name %></td>
       </tr>
-    <% end %>
+    <%# end %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
