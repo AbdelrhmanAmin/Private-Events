@@ -1,5 +1,5 @@
 class AttendeesController < ApplicationController
-  before_action :set_attendee, only: [:show, :edit, :update, :destroy]
+  before_action :set_attendee, only: %i[show edit update destroy]
 
   # GET /attendees
   # GET /attendees.json
@@ -9,8 +9,7 @@ class AttendeesController < ApplicationController
 
   # GET /attendees/1
   # GET /attendees/1.json
-  def show
-  end
+  def show; end
 
   # GET /attendees/new
   def new
@@ -18,13 +17,12 @@ class AttendeesController < ApplicationController
   end
 
   # GET /attendees/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /attendees
   # POST /attendees.json
   def create
-    @attendee = Attendee.create!(attendee_params) 
+    @attendee = Attendee.create!(attendee_params)
 
     respond_to do |format|
       if @attendee.save
@@ -61,14 +59,15 @@ class AttendeesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_attendee
-      @attendee = Attendee.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def attendee_params
-      puts params
-      params.require(:attendee).permit(:user_id, :event_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_attendee
+    @attendee = Attendee.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def attendee_params
+    puts params
+    params.require(:attendee).permit(:user_id, :event_id)
+  end
 end
