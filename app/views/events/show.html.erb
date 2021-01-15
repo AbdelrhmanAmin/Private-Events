@@ -8,7 +8,7 @@
     <% @event.attendances.each do |e| %>
       <%= e.name %> <br>
       <% if user_signed_in? %>
-        <% if current_user.id != @event.creator.id && e.id != current_user.id  %>
+        <% if current_user.id != @event.creator.id && e.id != current_user.id && @event.date > Date.today %>
           <%= form_for @attendance do |form| %>
             <%= form.hidden_field :event_id, value: @event.id %>
             <%= form.hidden_field :user_id, value: current_user.id %>
@@ -19,7 +19,7 @@
     <%end%>
   <%else%>
   <% if user_signed_in? %>
-        <% if current_user.id != @event.creator.id %>
+        <% if current_user.id != @event.creator.id && @event.date > Date.today %>
           <%= form_for @attendance do |form| %>
             <%= form.hidden_field :event_id, value: @event.id %>
             <%= form.hidden_field :user_id, value: current_user.id %>
