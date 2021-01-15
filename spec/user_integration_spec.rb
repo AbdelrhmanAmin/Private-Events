@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
 RSpec.describe 'User interactions', type: :feature do
@@ -20,7 +19,7 @@ RSpec.describe 'User interactions', type: :feature do
     expect(page).to have_content('Invalid Email or password.')
   end
   scenario 'sign in' do
-    User.create!(name: 'Neko', email:'swag@yolo.com', password: '123456' )
+    User.create!(name: 'Neko', email: 'swag@yolo.com', password: '123456')
     visit new_user_session_path
     fill_in 'Email', with: 'swag@yolo.com'
     fill_in 'Password', with: '123456'
