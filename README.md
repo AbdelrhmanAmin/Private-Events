@@ -6,6 +6,9 @@ In this project, we are building an event management application that publish ev
 First you need to create an account to create an event or to attend an event.
 Be aware of the event date, If it's older than today's date then it will be an old event and you won't be able to attend.
 The creator of the event is automatically assigened to the attendance list.
+
+## Screenshot
+
 ![screenshot](./screenshot.png)
 
 ## Built With
