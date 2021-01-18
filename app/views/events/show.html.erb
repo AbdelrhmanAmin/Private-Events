@@ -1,10 +1,14 @@
 <p id="notice"><%= notice %></p>
-  <h3>Creator</h3>
-  <%= @event.creator.name %> <br>
-  <h3>Event title</h3>
-  <%= @event.title %> <br>
+  <strong><span class='h5 text-warning'>Creator</span> :<%= @event.creator.name %></strong> <br>
+  <strong><span class='text-warning'>Event Date:</span> <%= @event.date%> </strong><br>
+  <strong><span class='h5 text-warning'>Event title:</span> <%= @event.title %></strong> <br>
+  <% if @event.date < Date.today%>
+    <strong class='h5 text-danger'>THIS IS AN OLD EVENT! YOU CAN'T ATTEND IT ANYMORE</strong>
+  <%end%>
+  <br>
+  <br>
   <%if @event.attendances.length > 0%>
-  <h4>Attendees</h4>
+  <h4 class='text-success'>Attendees</h4>
     <% @event.attendances.each do |e| %>
       <%= e.name %> <br>
       <% if user_signed_in? %>
@@ -19,7 +23,7 @@
     <%end%>
   <%else%>
   <% if user_signed_in? %>
-        <% if current_user.id != @event.creator.id && @event.date > Date.today %>
+        <% if current_user.id != @event.creator.id && @event.date == Date.today %>
           <%= form_for @attendance do |form| %>
             <%= form.hidden_field :event_id, value: @event.id %>
             <%= form.hidden_field :user_id, value: current_user.id %>

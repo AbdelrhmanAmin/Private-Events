@@ -7,7 +7,9 @@ class Event < ApplicationRecord
   has_many :attendances, through: :attendees, source: :attendee
 
   def auto_populate_creator
-    attendances << creator
+    if attendances.length == 0
+      attendances << creator
+    end
   end
 
   scope :old_events, -> { where(['events.date < ?', Date.today]) }

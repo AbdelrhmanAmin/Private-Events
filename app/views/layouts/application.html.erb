@@ -10,21 +10,26 @@
   </head>
 
   <body>
-  <br>
-    <% if notice %>
-    <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-    <%= link_to 'Homepage', root_path %> <br><br>
-    <% if user_signed_in? %>
-      <%= link_to current_user.name , current_user %> <br>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-    <%else%>
-      <%= link_to "Sign In", new_user_session_path %><br><br>
-      <%= link_to "Sign Up", new_user_registration_path  %>
-    <%end%>
+
+    <ul class='nav d-flex justify-content-between align-items-center bg-dark'>
+      <li><%= link_to 'Homepage', root_path, { class: 'nav-link text-warning h3'}%></li>
+        <ul>
+              <% if user_signed_in? %>
+              <li class='nav-link'><%= link_to 'New Event', new_event_path, {class: 'text-success'} %></li>
+              <li class='nav-link'><%= link_to current_user.name , current_user, {class: 'text-important'} %></li>
+              <li class='nav-link'><%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'text-danger'  %></li>
+            <%else%>
+              <li class='nav-link'><%= link_to "Sign In", new_user_session_path, {class: 'text-success'}%></li>
+              <li class='nav-link'><%= link_to "Sign Up", new_user_registration_path, {class: 'text-success'}  %></li>
+            <%end%>
+        </ul>
+    </ul>
+                <% if notice %>
+          <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
     <%= yield %>
   </body>
 </html>
