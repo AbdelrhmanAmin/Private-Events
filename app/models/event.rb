@@ -9,11 +9,13 @@ class Event < ApplicationRecord
   def auto_populate_creator
     attendances << creator if attendances.empty?
   end
-  def is_included?(user)
+
+  def included?(user)
     attendance_ids.include?(user.id)
   end
+
   def created_by?(user)
-      creator_id != user.id
+    creator_id != user.id
   end
   scope :old_events, -> { where(['events.date < ?', Date.today]) }
   scope :coming_events, -> { where(['events.date > ?', Date.today]) }

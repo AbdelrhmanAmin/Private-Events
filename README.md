@@ -9,7 +9,7 @@ The creator of the event is automatically assigened to the attendance list.
 
 ## Screenshot
 
-![screenshot](./screenshot.png)
+![screenshot](./screenshot2.png)
 
 ## Built With
 

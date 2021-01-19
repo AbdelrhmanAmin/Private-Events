@@ -48,7 +48,7 @@
         <td><%= event.creator.name %></td>
         <td><%= event.date %></td>
         <td><%= link_to 'Show', event, class: 'text-success' %></td>
-            <td><%= indexingEvents(event) %> </td>
+            <td><%= editing_events(event) %> </td>
       </tr>
     <% end %>
   </tbody>
