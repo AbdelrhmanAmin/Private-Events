@@ -21,23 +21,11 @@
   <div class="row">
     <div class="col-6">
       <h4>HOSTING</h4>
-            <ul>
-          <% @user.events.each do |e| %>
-              <% if e.date >= Date.today %>
-              <li><%= e.title %></li><br>
-              <% end %>
-          <% end %>
-        </ul>
+            <ul><%=hosting%></ul>
     </div>
     <div class="col-6">
         <h4>HOSTED</h4>
-          <ul>
-        <% @user.events.each do |e| %>
-            <% if e.date < Date.today %>
-            <li><%= e.title %></li><br>
-            <% end %>
-        <% end %>
-          </ul>
+          <ul> <%= hosted%> </ul>
     </div>
   </div>
 </div>

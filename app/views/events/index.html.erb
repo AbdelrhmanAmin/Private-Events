@@ -48,11 +48,7 @@
         <td><%= event.creator.name %></td>
         <td><%= event.date %></td>
         <td><%= link_to 'Show', event, class: 'text-success' %></td>
-        <% if user_signed_in? %>
-          <% if event.creator.id == current_user.id %>
-            <td><%= link_to 'Edit', edit_event_path(event) , class: 'text-warning' %></td>
-          <%end%>
-        <% end %>
+            <td><%= indexingEvents(event) %> </td>
       </tr>
     <% end %>
   </tbody>
