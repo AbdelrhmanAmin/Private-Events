@@ -1,10 +1,9 @@
-# rubocop:disable Lint/UselessAssignment
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
   context 'Creating a new event' do
-    let!(:user) {create(:user)}
-    let!(:event) {build(:event)}
+    let!(:user) { create(:user) }
+    let!(:event) { build(:event) }
     it 'Will fail because of requirments are not present or invalid [title, date, creator_id]' do
       expect(event).to_not be_valid
     end
@@ -20,4 +19,3 @@ RSpec.describe Event, type: :model do
     end
   end
 end
-# rubocop:enable Lint/UselessAssignment

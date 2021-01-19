@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'User interactions', type: :feature do
-  context "a context" do
-    let!(:user) {create(:user)}
+  context 'a context' do
+    let!(:user) { create(:user) }
     scenario 'sign up' do
       visit new_user_registration_path
       fill_in 'Name', with: 'NekoMaster'
@@ -30,7 +30,7 @@ RSpec.describe 'User interactions', type: :feature do
       click_on 'Log in'
       expect(page).to have_content('Signed in successfully.')
     end
-      scenario "Should return ALL events created by the user" do
+    scenario 'Should return ALL events created by the user' do
       visit new_user_session_path
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
@@ -39,7 +39,7 @@ RSpec.describe 'User interactions', type: :feature do
       expect(page).to have_text('HOSTED')
       expect(page).to have_text('HOSTING')
     end
-    scenario "Should return events user will attend and did attend" do
+    scenario 'Should return events user will attend and did attend' do
       visit new_user_session_path
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
@@ -49,5 +49,4 @@ RSpec.describe 'User interactions', type: :feature do
       expect(page).to have_text('ATTENDED')
     end
   end
-  
 end
