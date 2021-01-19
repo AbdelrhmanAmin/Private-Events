@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="actions">
-    <%= form.text_field :title, autofocus: true, autocomplete: "title" %>
+    <input name="event[title]" type="text"/>
     <input name="event[date]" type="date" min="2021-01-01" />
     <%= form.submit %>
   </div>

@@ -1,22 +1,43 @@
 <p id="notice"><%= notice %></p>
-  <h4>ATTENDING</h4>
-  <ul>
-    <% @user.attended_events.coming_events.each do |e| %>
-      <li><%= e.title %></li> <br> 
-    <%end%>
-  </ul>
-  <br>
-  <h4>ATTENDED</h4>
-  <ul>
-    <% @user.attended_events.old_events.each do |e| %>
-      <li><%= e.title %></li> <br> 
-    <%end%>
-  </ul>
-  <br>
-  <h4>HOSTING</h4>
-    <% @user.events.each do |e| %>
+<div class='container'>
+  <div class="row">
+    <div class="col-6">
+      <h4>ATTENDING</h4>
       <ul>
-        <li><%= e.title %></li><br><br>
+        <% @user.attended_events.coming_events.each do |e| %>
+          <li><%= e.title %></li> <br> 
+        <%end%>
       </ul>
-    <% end %>
-
+    </div>
+    <div class="col-6">
+      <h4>ATTENDED</h4>
+        <ul>
+          <% @user.attended_events.old_events.each do |e| %>
+            <li><%= e.title %></li> <br> 
+          <%end%>
+        </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <h4>HOSTING</h4>
+            <ul>
+          <% @user.events.each do |e| %>
+              <% if e.date >= Date.today %>
+              <li><%= e.title %></li><br>
+              <% end %>
+          <% end %>
+        </ul>
+    </div>
+    <div class="col-6">
+        <h4>HOSTED</h4>
+          <ul>
+        <% @user.events.each do |e| %>
+            <% if e.date < Date.today %>
+            <li><%= e.title %></li><br>
+            <% end %>
+        <% end %>
+          </ul>
+    </div>
+  </div>
+</div>
