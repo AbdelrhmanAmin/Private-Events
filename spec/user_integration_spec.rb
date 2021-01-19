@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 require 'rails_helper'
 
 RSpec.describe 'User interactions', type: :feature do
@@ -50,3 +51,4 @@ RSpec.describe 'User interactions', type: :feature do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
