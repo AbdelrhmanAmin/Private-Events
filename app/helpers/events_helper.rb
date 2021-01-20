@@ -1,7 +1,10 @@
 # rubocop:disable Style/GuardClause
 module EventsHelper
-  def editing_events(event)
-    link_to 'Edit', edit_event_path(event) if user_signed_in? && event.creator.id == current_user.id
+  def editing_events(event, user)
+    link_to 'Edit', edit_event_path(event) if user_signed_in? && event.creator.id == user.id
+  end
+  def deleting_events(event, user)
+    button_to 'Destroy', event_path(event), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-outline-danger' if user_signed_in? && event.creator.id == user.id
   end
 
   def old_warning

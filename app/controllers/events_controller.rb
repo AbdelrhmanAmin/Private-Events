@@ -4,7 +4,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @coming_events = Event.coming_events
+    @prev_events = Event.old_events
   end
 
   # GET /events/1
@@ -19,7 +20,9 @@ class EventsController < ApplicationController
   end
 
   # GET /events/1/edit
-  def edit; end
+  def edit
+    @event = Event.find(params[:id])
+  end
 
   # POST /events
   # POST /events.json

@@ -2,10 +2,7 @@
 
 ## Members-only
 
-In this project, we are building an event management application that publish events and allow users to attend!
-First you need to create an account to create an event or to attend an event.
-Be aware of the event date, If it's older than today's date then it will be an old event and you won't be able to attend.
-The creator of the event is automatically assigened to the attendance list.
+The project is based on Rails Asociations. If a user is logged in will have the ability to create a new events and Invite users to that event, if the user is not logged in he won't be able to
 
 ## Screenshot
 
@@ -18,6 +15,8 @@ The creator of the event is automatically assigened to the attendance list.
 - devise
 - Rspec
 - Capybara
+- Bootstrap
+- SQLite3
 
 ## Getting Started
 
@@ -26,25 +25,31 @@ The creator of the event is automatically assigened to the attendance list.
 Computer running Mac OS, Windows, or Linux Ubuntu.
 Internet browser: Firefox, Google Chrome, Opera...
 
+- Ruby 2.7.0
+- Rails gem
+- Bundle
+
 [Install Ruby](https://www.theodinproject.com/courses/ruby-programming/lessons/installing-ruby-ruby-programming)
 [Install Rails](https://www.theodinproject.com/courses/ruby-on-rails/lessons/your-first-rails-application-ruby-on-rails)
 
 ### Setup
 
-git clone https://github.com/AbdelrhmanAmin/Private-Events.git
-cd Private-Events
-bundle install
-rails db:migrate
-rails server
-open in browser localhost:3000
+Open terminal
+
+- `git clone https://github.com/AbdelrhmanAmin/Private-Events.git`
+- `cd Private-Events`
+- `bundle install`
+- `rails db:migrate`
+- `rails server` <br>
+
+open in browser `localhost:3000`
+
+### TESTING
+
+- make sure to run `bundle install`
+- to test, run this on the console: `rspec spec/ -filename-.rb`
 
 ## Authors
-
-**Mir Rawshan Ali**
-
-- GitHub: [@sumon0002009](https://github.com/sumon0002001)
-- Twitter: [@sumon0002009](https://twitter.com/Sumon0002009)
-- LinkedIn: [Mir Rawshan Ali](https://www.linkedin.com/in/mir-rawshan-ali-27b6a5198/)
 
 😎 **Abdo Amin**
 
@@ -59,4 +64,4 @@ Feel free to check the issues page https://github.com/AbdelrhmanAmin/Private-Eve
 
 ## Show your support
 
-Give a :star:️ if you like this project!
+Give a star if you like this project!

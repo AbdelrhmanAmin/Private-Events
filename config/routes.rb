@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :attendees
-  resources :events, only: [:new, :create, :show, :index]
+  resources :events, only: [:new, :create, :show, :index, :edit]
   devise_for :users, :controllers => { registrations: 'registrations' }
     devise_scope :user do
     get '/users/sign_in' => 'devise/sessions#new'
