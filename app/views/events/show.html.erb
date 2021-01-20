@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+  <strong><span class='h5 text-warning'>Creator</span> :<%= @event.creator.name %></strong> <br>
+  <strong><span class='text-warning'>Event Date:</span> <%= @event.date%> </strong><br>
+  <strong><span class='h5 text-warning'>Event title:</span> <%= @event.title %></strong> <br>
+  <strong class='h5 text-danger'><%=old_warning%></strong>
+  <br>
+  <br>
+    <h6 class='text-success'><%= attendance_date%></h6>
+    <%= render @event.attendances %>
+    <%= attendance_checker(current_user) %>
+

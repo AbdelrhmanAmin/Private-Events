@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Events</h1>
+
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Event:</th>
+      <th>Creator:</th>
+      <th>Date</th>
+      <th colspan='4'></th>
+    </tr>
+  </thead>
+
+  <h4>Upcoming Events</h4>
+  <tbody>
+    <%= render @coming_events %>
+  </tbody>
+</table>
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Event:</th>
+      <th>Creator:</th>
+      <th>Date</th>
+      <th colspan='4'></th>
+    </tr>
+  </thead>
+
+  <h4>Old Events</h4>
+  <tbody>
+    <% @prev_events.each do |event| %>
+      <tr>
+        <td><%= event.title %></td>
+        <td><%= event.creator.name %></td>
+        <td><%= event.date %></td>
+        <td><%= link_to 'Show', event, class: 'text-success' %></td>
+            <td><%= editing_events(event, current_user) %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

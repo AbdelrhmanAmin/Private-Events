@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+<div class='container'>
+  <div class="row">
+    <div class="col-6">
+      <h4>ATTENDING</h4>
+      <ul>
+        <% @user.attended_events.coming_events.each do |e| %>
+          <li><%= e.title %></li> <br> 
+        <%end%>
+      </ul>
+    </div>
+    <div class="col-6">
+      <h4>ATTENDED</h4>
+        <ul>
+          <% @user.attended_events.old_events.each do |e| %>
+            <li><%= e.title %></li> <br> 
+          <%end%>
+        </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <h4>HOSTING</h4>
+            <ul><%=hosting(@upcoming) %></ul>
+    </div>
+    <div class="col-6">
+        <h4>HOSTED</h4>
+          <ul> <%= hosted(@old_events) %> </ul>
+    </div>
+  </div>
+</div>
