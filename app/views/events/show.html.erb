@@ -5,7 +5,7 @@
   <strong class='h5 text-danger'><%=old_warning%></strong>
   <br>
   <br>
-    <h4 class='text-success'>Attendees</h4>
+    <h6 class='text-success'><%= attendance_date%></h6>
     <%= render @event.attendances %>
     <%= attendance_checker(current_user) %>
 

@@ -18,5 +18,5 @@ class Event < ApplicationRecord
     creator_id != user.id
   end
   scope :old_events, -> { where(['events.date < ?', Date.today]) }
-  scope :coming_events, -> { where(['events.date > ?', Date.today]) }
+  scope :coming_events, -> { where(['events.date >= ?', Date.today]) }
 end
