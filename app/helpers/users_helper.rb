@@ -1,12 +1,12 @@
 module UsersHelper
-  def hosting
-    @user.events.each do |e|
+  def hosting(events)
+    events.each do |e|
       return e.title if e.date >= Date.today
     end
   end
 
-  def hosted
-    @user.events.each do |e|
+  def hosted(events)
+    events.each do |e|
       return e.title if e.date < Date.today
     end
   end

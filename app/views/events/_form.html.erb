@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="actions">
-    <input name="event[title]" type="text"/>
-    <input name="event[date]" type="date" min="2021-01-01" />
+    <%= form.text_field :title, value: event.title %>
+    <%= form.date_field :date, min: '2021-01-01' %>
     <%= form.submit %>
   </div>
 <% end %>
